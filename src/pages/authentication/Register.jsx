@@ -108,7 +108,7 @@ const Register = () => {
                                     {...register("name", {
                                         required: true,
                                     })} />
-                                {errors.email && <p className="text-red-500">Name is required</p>}
+                                {errors.name && <p className="text-red-500">Name is required</p>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -118,7 +118,7 @@ const Register = () => {
                                     {...register("photoURL", {
                                         required: true
                                     })} />
-                                {errors.email && <p className="text-red-500">PhotoURL is required</p>}
+                                {errors.photoURL && <p className="text-red-500">PhotoURL is required</p>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -158,7 +158,7 @@ const Register = () => {
                                             message: 'Password must be at least 6 characters long and contain at least one letter and one number'
                                         }
                                     })} />
-                                {errors.email && <p className="text-red-500">{errors.matchPass.message}</p>}
+                                {errors.matchPass && <p className="text-red-500">{errors.matchPass.message}</p>}
                             </div>
                             <p>Already User ? <Link to='/login' className="underline text-info">Login Now</Link></p>
                             <div className="form-control mt-6">

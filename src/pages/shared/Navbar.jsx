@@ -4,18 +4,18 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-    const {logOut, user} = useContext(AuthContext);
+    const { logOut, user } = useContext(AuthContext);
     console.log(user);
 
     const handleLogOut = () => {
         logOut()
-        .then()
-        .catch(error => {
-            Swal.fire(
-                error.message,
-                'error'
-            ) 
-        })
+            .then()
+            .catch(error => {
+                Swal.fire(
+                    error.message,
+                    'error'
+                )
+            })
     }
 
     const navItems = <>
@@ -24,17 +24,20 @@ const Navbar = () => {
         <li className='hover:text-info'><Link>Classes</Link></li>
         <li className='hover:text-info'><Link>Dashboard</Link></li>
         {
-            user ? 
-            <li className='hover:text-info'><button onClick={handleLogOut}>Log Out</button></li> :
-            <li className='hover:text-info'><Link to='/login'>Login</Link></li>
+            user ?
+                <li className='hover:text-info'><button onClick={handleLogOut}>Log Out</button></li> :
+                <li className='hover:text-info'><Link to='/login'>Login</Link></li>
         }
-        <li className='hover:text-info'><Link>
+        {
+            user && 
+            <li className='hover:text-info'>
             <div className="avatar">
                 <div className="w-12 rounded-full ring ring-info ring-offset-base-100 ring-offset-2">
                     <img src={user?.photoURL} />
                 </div>
             </div>
-        </Link></li>
+        </li>
+        }
     </>
     return (
         <nav className="navbar bg-base-200 items-center px-16 mb-12">
