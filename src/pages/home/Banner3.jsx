@@ -2,8 +2,8 @@ import React from 'react';
 
 const Banner3 = () => {
     return (
-        <article>
-            <h3 className='text-5xl font-bold text-center mb-10 text-primaryClr'>Popular Instructors</h3>
+        <article className='my-10'>
+            <h3 className='text-5xl font-bold text-center mt-40 text-primaryClr'>Popular Instructors</h3>
             <section className='grid grid-cols-1 md:grid-cols-2 gap-20 gap-y-40 md:mx-40 mx-5 mt-40'>
                 <div className="card relative bg-slate-200 shadow-2xl">
                     <div className="avatar absolute -top-1/3 left-10 bg-slate-200 rounded shadow-neutral-500 shadow-inner p-3">
