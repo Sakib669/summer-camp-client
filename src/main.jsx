@@ -11,41 +11,55 @@ import Register from './pages/authentication/Register.jsx'
 import Instructors from './pages/instructors/Instructors.jsx'
 import Classes from './pages/classes/Classes.jsx'
 import axios from 'axios'
+import Dashboard from './pages/dashboard/Dashboard.jsx'
+import PrivateRoute from './routes/PrivateRoute.jsx'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomeLayout/>,
+    element: <HomeLayout />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/login',
-        element: <Login/>
+        element: <Login />
       },
       {
         path: '/register',
-        element: <Register/>
+        element: <Register />
       },
       {
         path: '/instructors',
-        element: <Instructors/>
+        element: <Instructors />
       },
       {
         path: '/classes',
-        element: <Classes/>,
+        element: <Classes />,
         loader: () => axios('http://localhost:5000/classes')
-      }
+      },
     ]
+  },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><Dashboard /></PrivateRoute>
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,
 )

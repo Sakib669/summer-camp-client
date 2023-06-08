@@ -22,7 +22,7 @@ const Navbar = () => {
         <li className='hover:text-info'><Link>Home</Link></li>
         <li className='hover:text-info'><Link to='/instructors'>Instructors</Link></li>
         <li className='hover:text-info'><Link to='/classes'>Classes</Link></li>
-        <li className='hover:text-info'><Link>Dashboard</Link></li>
+        <li className='hover:text-info'><Link to='/dashboard'>Dashboard</Link></li>
         {
             user ?
                 <li className='hover:text-info'><button onClick={handleLogOut}>Log Out</button></li> :
