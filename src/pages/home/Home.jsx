@@ -3,6 +3,7 @@ import Banner from './Banner';
 import Banner2 from './Banner2';
 import Banner3 from './Banner3';
 import Footer from '../shared/Footer';
+import Banner4 from './Banner4';
 
 const Home = () => {
     return (
@@ -10,7 +11,7 @@ const Home = () => {
             <Banner/>
             <Banner2/>
             <Banner3/>
-            <Footer/>
+            <Banner4/>
         </section>
     );
 };
