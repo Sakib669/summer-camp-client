@@ -9,6 +9,7 @@ import Home from './pages/home/Home.jsx'
 import Login from './pages/authentication/Login.jsx'
 import Register from './pages/authentication/Register.jsx'
 import Instructors from './pages/instructors/Instructors.jsx'
+import Classes from './pages/classes/Classes.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
       {
         path: '/instructors',
         element: <Instructors/>
+      },
+      {
+        path: '/classes',
+        element: <Classes/>,
+        loader: () => fetch('')
       }
     ]
   }
