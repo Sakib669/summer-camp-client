@@ -10,6 +10,9 @@ import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css';
 
+import { SunnyMorning } from 'moving-letters'
+
+
 
 const Banner4 = () => {
     const [reviews, setReviews] = useState([]);
@@ -24,8 +27,10 @@ const Banner4 = () => {
 
     return (
         <section className="my-20 md:mx-40 mx-10">
-            <h3 className="text-4xl font-bold mb-20 text-center
-            ">Our Student's Review</h3>
+            <h3 className="font-bold mb-20 text-center
+            ">
+                <SunnyMorning text="Our Student's Review" />
+                </h3>
             <Swiper
                 pagination={{
                     dynamicBullets: true,
@@ -36,8 +41,8 @@ const Banner4 = () => {
                 {
                     reviews.map(review =>
                         <SwiperSlide
-                         className="space-y-10"
-                         key={review.author}>
+                            className="space-y-10"
+                            key={review.author}>
                             <h3 className="text-3xl font-semibold ">
                                 {review.author}
                             </h3>
