@@ -10,6 +10,7 @@ import Login from './pages/authentication/Login.jsx'
 import Register from './pages/authentication/Register.jsx'
 import Instructors from './pages/instructors/Instructors.jsx'
 import Classes from './pages/classes/Classes.jsx'
+import axios from 'axios'
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: '/classes',
         element: <Classes/>,
-        loader: () => fetch('')
+        loader: () => axios('http://localhost:5000/classes')
       }
     ]
   }

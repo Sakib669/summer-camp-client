@@ -12,11 +12,11 @@ const Banner2 = () => {
     return (
         <article className=' my-10'>
             
-            <h3 className='font-bold text-center mb-10 '><SunnyMorning  text={`Popular Classes`}/></h3>
+            <span className='font-bold text-center mb-10 '><SunnyMorning  text={`Popular Classes`}/></span>
             <figure className='grid grid-cols-1 md:grid-cols-2 gap-10 md:mx-40 mx-5'>
                 {
-                    links.map((link) =>
-                        <img className='shadow-neutral-400 shadow-2xl' src={link} />)
+                    links.map((link, index) =>
+                        <img key={index} className='shadow-neutral-400 shadow-2xl' src={link} />)
                 }
             </figure>
         </article>

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { logOut, user } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
 
     const handleLogOut = () => {
         logOut()
@@ -21,7 +21,7 @@ const Navbar = () => {
     const navItems = <>
         <li className='hover:text-info'><Link>Home</Link></li>
         <li className='hover:text-info'><Link to='/instructors'>Instructors</Link></li>
-        <li className='hover:text-info'><Link>Classes</Link></li>
+        <li className='hover:text-info'><Link to='/classes'>Classes</Link></li>
         <li className='hover:text-info'><Link>Dashboard</Link></li>
         {
             user ?

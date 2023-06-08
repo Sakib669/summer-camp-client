@@ -21,16 +21,15 @@ const Banner4 = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-    console.log(reviews);
 
 
 
     return (
         <section className="my-20 md:mx-40 mx-10">
-            <h3 className="font-bold mb-20 text-center
+            <span className="font-bold mb-20 text-center
             ">
                 <SunnyMorning text="Our Student's Review" />
-                </h3>
+                </span>
             <Swiper
                 pagination={{
                     dynamicBullets: true,
