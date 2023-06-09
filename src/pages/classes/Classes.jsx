@@ -27,7 +27,7 @@ const Classes = () => {
 
 
         const lectureData = { lecture, email: user.email }
-        axios.post('http://localhost:5000/classesCart', lectureData)
+        axios.post('http://localhost:5000/classes-cart', lectureData)
             .then(res => {
                 if (res.data.acknowledged) {
                     Swal.fire(

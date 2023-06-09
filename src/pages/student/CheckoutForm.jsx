@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -17,6 +18,7 @@ const CheckoutForm = ({ price, lectureId, lecture }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (price > 0) {
@@ -95,9 +97,13 @@ const CheckoutForm = ({ price, lectureId, lecture }) => {
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.result.insertedId) {
+                    if(res.data){
                         // display confirm
-                        console.log(res.data.result)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Payment successfully',
+                          })
+                        navigate('/dashboard/studentClasses')
                     }
                 })
         }
@@ -127,7 +133,6 @@ const CheckoutForm = ({ price, lectureId, lecture }) => {
                 <input value="Pay" className="btn btn-primary btn-sm mt-4" type="submit" disabled={!stripe || !clientSecret || processing} />
             </form>
             {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-            {transactionId && <p className="text-green-500">Transaction complete with transactionId: {transactionId}</p>}
         </>
     );
 };
