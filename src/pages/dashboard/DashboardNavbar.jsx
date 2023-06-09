@@ -1,18 +1,29 @@
 import React from 'react';
 import useStudent from '../../hooks/useStudent';
 import { Link, NavLink } from 'react-router-dom';
+import useInstructor from '../../hooks/useInstructor';
 
 const DashboardNavbar = () => {
-    const [isStudent, isStudentLoading] = useStudent();
+    const [isStudent] = useStudent();
+    const [isInstructor] = useInstructor();
+    console.log(isStudent , 'student');
+    console.log(isInstructor , 'instructor');
 
     const navItems = <>
         <li className='hover:text-info'><NavLink to='/'>Home</NavLink></li>
         {
-            isStudent &&
+            isStudent.length > 0 &&
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentClasses'>My Selected Classes</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentEnrolledClasses'>My Enrolled Classes</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentPaymentHistory'>My Enrolled Classes</NavLink></li>
+            </>
+        }
+        {
+            isInstructor &&
+            <>
+                <li className='hover:text-info'><NavLink to='/dashboard/instructorAddClass'>Add a Class</NavLink></li>
+                <li className='hover:text-info'><NavLink to='/dashboard/instructorMyClasses'>My Classes</NavLink></li>
             </>
         }
     </>

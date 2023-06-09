@@ -9,7 +9,7 @@ const Classes = () => {
     const { data } = useLoaderData();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    console.log(data);
     const addToCart = (lecture) => {
         if (!user) {
             Swal.fire({
@@ -51,7 +51,7 @@ const Classes = () => {
                             <p>Instructor: {lecture.instructor}</p>
                             <p>Price: ${lecture.price}</p>
                             <p>Available Seats : {lecture.availableSeats}</p>
-                            <button disabled={lecture.availableSeats <= 0 || ['admin', 'instructor'].includes(user.role)} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
+                            <button disabled={lecture.availableSeats <= 0 || ['admin', 'instructor'].includes(user?.role)} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
 
                         </div>
                     </div>)
