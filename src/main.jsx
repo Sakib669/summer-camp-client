@@ -17,6 +17,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import SelectedClasses from './pages/student/SelectedClasses.jsx'
 
 const queryClient = new QueryClient()
 
@@ -50,7 +51,13 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <PrivateRoute><Dashboard /></PrivateRoute>
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    children: [
+      {
+        path : 'studentClasses',
+        element: <SelectedClasses/>
+      }
+    ]
   }
 ])
 

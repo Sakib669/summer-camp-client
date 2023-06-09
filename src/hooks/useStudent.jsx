@@ -7,13 +7,13 @@ const useStudent = () => {
     const {user} = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
     // use axios secure with react query
-    const {data: isStudent = [], isLoading: isStudentLoading} = useQuery({
+    const {data: isStudent = [], isLoading: isStudentLoading, refetch} = useQuery({
         queryKey: ['isAdmin', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/user/student/${user?.email}`);
             return res.data;
         }
     })
-    return [isStudent, isStudentLoading]
+    return [isStudent, isStudentLoading ,refetch];
 }
 export default useStudent;

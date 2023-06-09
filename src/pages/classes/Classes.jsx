@@ -10,7 +10,7 @@ const Classes = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const addToCart = (id) => {
+    const addToCart = (lecture) => {
         if (!user) {
             Swal.fire({
                 title: 'You have to Login first',
@@ -25,8 +25,8 @@ const Classes = () => {
             })
         }
 
-        
-        const lectureData = { id: id, email: user.email }
+
+        const lectureData = { lecture, email: user.email }
         axios.post('http://localhost:5000/classesCart', lectureData)
             .then(res => {
                 if (res.data.acknowledged) {
@@ -51,7 +51,7 @@ const Classes = () => {
                             <p>Instructor: {lecture.instructor}</p>
                             <p>Price: ${lecture.price}</p>
                             <p>Available Seats : {lecture.availableSeats}</p>
-                            <button disabled={lecture.availableSeats <= 0 || ['admin', 'instructor'].includes(user.role)} onClick={() => addToCart(lecture._id)} className="btn btn-info py-1">Select</button>
+                            <button disabled={lecture.availableSeats <= 0 || ['admin', 'instructor'].includes(user.role)} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
 
                         </div>
                     </div>)
