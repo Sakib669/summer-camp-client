@@ -50,11 +50,13 @@ const SelectedClasses = () => {
                         {
                             isStudent.map((s, index) =>
                                 <tr key={s._id}>
-                                    <th>{index + 1}</th>
+                                    <th>{index + 1} {s._id}</th>
                                     <td>{s.lecture.name}</td>
                                     <td>{s.lecture.instructor}</td>
                                     <td ><button onClick={() => handleDeleteLecture(s._id)} className='btn btn-error'><FaTrashAlt /></button></td>
-                                    <td><Link><button className='btn btn-warning' >Pay</button></Link></td>
+                                    <td><Link  to={{
+                                        pathname: `/dashboard/studentClasses/pay/${s._id}`,
+                                    }}><button className='btn btn-warning' >Pay</button></Link></td>
                                 </tr>
                             )
                         }
@@ -66,3 +68,6 @@ const SelectedClasses = () => {
 };
 
 export default SelectedClasses;
+
+
+// to={`/dashboard/studentClasses/pay`}
