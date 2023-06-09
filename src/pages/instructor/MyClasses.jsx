@@ -27,6 +27,7 @@ const MyClasses = () => {
                             <th>Lecture Name</th>
                             <th>Enrolled Sturdent's</th>
                             <th>Status</th>
+                            <th>Update</th>
                             <th>Feedback</th>
                         </tr>
                     </thead>
@@ -38,6 +39,7 @@ const MyClasses = () => {
                                     <td>{item.name}</td>
                                     <td>{item.enrolled}</td>
                                     <td>{item.statue}</td>
+                                    <td><button className='btn btn-accent'>Update</button></td>
                                     <td>{item.feedback && <button>Feedback</button>}</td>
                                 </tr>
                                 )

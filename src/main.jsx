@@ -23,6 +23,8 @@ import EnrolledClasses from './pages/student/EnrolledClasses.jsx'
 import PaymentHistory from './pages/student/PaymentHistory.jsx'
 import AddClass from './pages/instructor/AddClass.jsx'
 import MyClasses from './pages/instructor/MyClasses.jsx'
+import ManageUsers from './pages/admin/ManageUsers.jsx'
+import ManageClasses from './pages/admin/ManageClasses.jsx'
 
 const queryClient = new QueryClient()
 
@@ -81,6 +83,14 @@ const router = createBrowserRouter([
       {
         path: 'instructorMyClasses',
         element: <MyClasses/>
+      },
+      {
+        path: 'admin/manageUsers',
+        element: <ManageUsers/>
+      },
+      {
+        path: 'admin/manageClasses',
+        element: <ManageClasses/>
       }
     ]
   }
