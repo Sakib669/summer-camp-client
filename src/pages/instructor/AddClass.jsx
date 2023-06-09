@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
@@ -8,20 +8,23 @@ import Swal from 'sweetalert2';
 const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {user} = useContext(AuthContext);
+    const [disabled, setDisabled] = useState(false);
 
     const onSubmit = (data) => {
         // Logic for creating a class
-        const { name, image, instructor, availableSeats, price } = data;
+        setDisabled(true);
+        const { name, image, instructor, availableSeats, price, email } = data;
         const lectureData = {
-            email: user.email,
+            email,
             name,
             image,
             instructor,
             availableSeats,
             price,
-            statue: 'pending'
+            statue: 'pending',
+            enrolled: 0
         };
-        axios.post('http://localhost:5000/classes')
+        axios.post('http://localhost:5000/classes', lectureData)
         .then(res => {
             console.log(res);
             if(res.data.acknowledged){
@@ -31,6 +34,7 @@ const AddClass = () => {
                     footer: 'admin will approve this lecture',
                     text: 'Lecture will be pending',
                   })
+                setDisabled(false);
             }
         })
         .catch(err => {
@@ -65,6 +69,11 @@ const AddClass = () => {
                 </div>
 
                 <div className="mb-4 shadow-lg">
+                    <label className="block mb-2 font-bold" htmlFor="instructor">Instructor</label>
+                    <input value={user?.email} {...register('email', )} className="w-full px-4 py-2 border rounded" />
+                </div>
+
+                <div className="mb-4 shadow-lg">
                     <label className="block mb-2 font-bold" htmlFor="availableSeats">Available Seats</label>
                     <input type="number" {...register('availableSeats', { required: true })} className="w-full px-4 py-2 border rounded" />
                     {errors.availableSeats && <span className="text-red-500">This field is required</span>}
@@ -76,7 +85,7 @@ const AddClass = () => {
                     {errors.price && <span className="text-red-500">This field is required</span>}
                 </div>
 
-                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">Add</button>
+                <button type="submit" disabled={disabled} className="px-4 py-2 btn btn-info">Add</button>
             </form>
         </section>
     );
