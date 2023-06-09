@@ -19,6 +19,8 @@ import {
 } from '@tanstack/react-query'
 import SelectedClasses from './pages/student/SelectedClasses.jsx'
 import Payment from './pages/student/Payment.jsx'
+import EnrolledClasses from './pages/student/EnrolledClasses.jsx'
+import PaymentHistory from './pages/student/PaymentHistory.jsx'
 
 const queryClient = new QueryClient()
 
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: 'studentClasses/pay/:id',
         element: <Payment/>
+      },
+      {
+        path: 'studentEnrolledClasses',
+        element: <EnrolledClasses/>,
+      },
+      {
+        path: 'studentPaymentHistory',
+        element: <PaymentHistory/>
       }
     ]
   }

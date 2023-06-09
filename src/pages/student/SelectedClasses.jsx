@@ -50,7 +50,7 @@ const SelectedClasses = () => {
                         {
                             isStudent.map((s, index) =>
                                 <tr key={s._id}>
-                                    <th>{index + 1} {s._id}</th>
+                                    <th>{index + 1}</th>
                                     <td>{s.lecture.name}</td>
                                     <td>{s.lecture.instructor}</td>
                                     <td ><button onClick={() => handleDeleteLecture(s._id)} className='btn btn-error'><FaTrashAlt /></button></td>

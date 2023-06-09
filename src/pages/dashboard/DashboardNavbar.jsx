@@ -12,6 +12,7 @@ const DashboardNavbar = () => {
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentClasses'>My Selected Classes</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentEnrolledClasses'>My Enrolled Classes</NavLink></li>
+                <li className='hover:text-info'><NavLink to='/dashboard/studentPaymentHistory'>My Enrolled Classes</NavLink></li>
             </>
         }
     </>
