@@ -24,17 +24,18 @@ const ManageUsers = () => {
     }
 
     return (
-        <section className='mx-20'>
+        <section className='mx-20 min-h-screen'>
             <h2 className='text-3xl text-center font-extrabold mb-10'>Manage Users</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

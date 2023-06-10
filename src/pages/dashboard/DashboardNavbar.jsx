@@ -16,26 +16,32 @@ const DashboardNavbar = () => {
     const navItems = <>
         <li className='hover:text-info'><NavLink to='/'>Home</NavLink></li>
         {
-            isStudent && !isAdmin && !isInstructor &&
+            isStudent ?
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentClasses'>My Selected Classes</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentEnrolledClasses'>My Enrolled Classes</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentPaymentHistory'>My Enrolled Classes</NavLink></li>
             </>
+            : 
+            <></>
         }
         {
-            isInstructor && !isStudent && !isAdmin && 
+            isInstructor ?
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/instructorAddClass'>Add a Class</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/instructorMyClasses'>My Classes</NavLink></li>
             </>
+            :
+            <></>
         }
         {
-            isAdmin && !isStudent && !isInstructor &&
+            isAdmin ?
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/admin/manageUsers'>Manage Users</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/admin/manageClasses'>Manage Classes</NavLink></li>
             </>
+            :
+            <></>
         }
     </>
 

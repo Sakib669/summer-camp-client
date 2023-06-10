@@ -21,7 +21,7 @@ const AddClass = () => {
             instructor,
             availableSeats,
             price,
-            statue: 'pending',
+            status: 'pending',
             enrolled: 0
         };
         axios.post('http://localhost:5000/classes', lectureData)
