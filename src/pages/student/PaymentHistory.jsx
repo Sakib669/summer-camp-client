@@ -8,7 +8,7 @@ const PaymentHistory = () => {
         axiosSecure('/payment-details')
             .then(res => setData(res.data));
     }, []);
-    console.log(data);
+    // console.log(data);
     return (
         <section>
             <div className="overflow-x-auto mx-40 min-h-screen">

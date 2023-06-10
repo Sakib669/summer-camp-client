@@ -19,6 +19,7 @@ const CheckoutForm = ({ price, lectureId, lecture }) => {
     const [transactionId, setTransactionId] = useState('');
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+    // console.log(lecture);
 
     useEffect(() => {
         if (price > 0) {
@@ -97,13 +98,20 @@ const CheckoutForm = ({ price, lectureId, lecture }) => {
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data);
-                    if(res.data){
+                    if (res.data) {
                         // display confirm
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Payment successfully',
-                          })
-                        navigate('/dashboard/studentClasses')
+
+                        axiosSecure.patch(`/classes-cart/${lecture._id}`)
+                            .then(res => {
+                                if (res.data) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Payment successfully',
+                                    })
+                                    navigate('/dashboard/studentClasses')
+                                }
+                            })
+
                     }
                 })
         }

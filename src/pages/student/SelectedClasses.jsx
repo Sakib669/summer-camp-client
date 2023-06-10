@@ -48,7 +48,7 @@ const SelectedClasses = () => {
                     </thead>
                     <tbody className='items-center'>
                         {
-                            isStudent.map((s, index) =>
+                            isStudent?.map((s, index) =>
                                 <tr key={s._id}>
                                     <th>{index + 1}</th>
                                     <td>{s.lecture.name}</td>
