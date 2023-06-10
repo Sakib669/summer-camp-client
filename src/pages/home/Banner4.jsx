@@ -25,7 +25,7 @@ const Banner4 = () => {
 
 
     return (
-        <section className="my-20 md:mx-40 mx-10">
+        <section className="py-20 md:mx-40 mx-10 ">
             <span className="font-bold mb-20 text-center
             ">
                 <SunnyMorning text="Our Student's Review" />
@@ -35,12 +35,12 @@ const Banner4 = () => {
                     dynamicBullets: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper rounded-lg"
             >
                 {
                     reviews.map(review =>
                         <SwiperSlide
-                            className="space-y-10"
+                            className="space-y-10 py-5"
                             key={review.author}>
                             <h3 className="text-3xl font-semibold ">
                                 {review.author}

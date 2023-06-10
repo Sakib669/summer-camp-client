@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 
 const Banner = () => {
     return (
-        <article className="my-16 md:mx-20">
+        <article className="py-16 md:mx-20">
             <Swiper
                 pagination={{
                     type: "progressbar",
