@@ -1,4 +1,4 @@
-const stripePromise = loadStripe('pk_test_51N7cRyE9XlTLe8gVxqiVH0Z3eYJ0cFDl0TbC1JLSFkn1iAgaimPgczFEhQqzRWaG2bwBL6tO7f634a378vIwPoY600WCBJvdby');
+const stripePromise = loadStripe(import.meta.env.VITE_stripe_test_key);
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm';
