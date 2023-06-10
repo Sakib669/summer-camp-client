@@ -3,13 +3,15 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useStudent from './../../hooks/useStudent';
 
 
 const Classes = () => {
     const { data } = useLoaderData();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    console.log(data);
+    const [isStudent] = useStudent();
+    console.log(data); 
     const addToCart = (lecture) => {
         if (!user) {
             Swal.fire({
@@ -51,7 +53,7 @@ const Classes = () => {
                             <p>Instructor: {lecture.instructor}</p>
                             <p>Price: ${lecture.price}</p>
                             <p>Available Seats : {lecture.availableSeats}</p>
-                            <button disabled={lecture.availableSeats <= 0 || ['admin', 'instructor'].includes(user?.role)} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
+                            <button disabled={!isStudent || lecture.availableSeats <= 0} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
 
                         </div>
                     </div>)

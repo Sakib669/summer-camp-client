@@ -27,7 +27,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 updateUserProfile(name, photoURL)
                     .then(result => {
-                        const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student' }
+                        const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student' , image: loggedUser.photoURL}
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -37,11 +37,12 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(loggedUser);
+                                // console.log(loggedUser);
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'Register Successfull',
                                 })
+                                navigete('/');
                             })
                     })
                     .catch(error => {
@@ -166,7 +167,7 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="divider"></div>
-                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-error mx-auto mb-5"><FaGoogle /></button>
+                        <button type="button" onClick={handleGoogleLogin} className="btn btn-circle btn-error mx-auto mb-5"><FaGoogle /></button>
                     </form>
                 </div>
             </div>

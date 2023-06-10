@@ -42,13 +42,13 @@ const Navbar = ({ toggle, setToggle }) => {
                 </div>
             </li>
         }
-        <li ><select onChange={handleToggleChange} className="select w-5 max-w-xs">
-            <option value={true} selected>Light</option>
+        <li ><select  onChange={handleToggleChange} className="select w-5 max-w-xs">
+            <option value={true} defaultValue>Light</option>
             <option value={false}>Dark</option>
         </select></li>
     </>
     return (
-        <nav className={`navbar  items-center px-16 pb-12 ${toggle ? 'bg-base-200': 'bg-slate-500 text-white'}`}>
+        <nav className={`navbar  items-center ${toggle ? 'bg-base-200' : 'bg-slate-500 text-white'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -57,8 +57,12 @@ const Navbar = ({ toggle, setToggle }) => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50 ">
                         {navItems}
                     </ul>
+                    <a className=" normal-case text-xl">
+                        <img src="https://i.ibb.co/SrW2q87/logo-1.png"
+                            className="w-32 inline" />
+                    </a>
+
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
             </div>
             <div className="navbar-end hidden lg:flex items-center">
                 <ul className="menu menu-horizontal px-1 items-center ">

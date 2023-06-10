@@ -4,11 +4,12 @@ import DashboardNavbar from './DashboardNavbar';
 import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
+    const toggle = true;
     return (
         <main>
-            <DashboardNavbar/>
-            <Outlet/>
-            <Footer/>
+            <DashboardNavbar />
+            <Outlet />
+            <Footer toggle={toggle} />
         </main>
     );
 };

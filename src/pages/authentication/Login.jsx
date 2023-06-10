@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import authImg from '../../assets/images/authentication.gif'
-import { FaGoogle } from "react-icons/fa";
-import { useContext } from "react";
+import { FaEye, FaGoogle } from "react-icons/fa";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -11,7 +11,13 @@ import Swal from "sweetalert2";
 const Login = () => {
     const { logIn, googleLogIn } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [view, setView] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+
+
     const onSubmit = data => {
         console.log(data);
         const { email, password } = data;
@@ -22,17 +28,18 @@ const Login = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Login Successfull',
-                  })
+                })
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error.message))
     };
 
     const handleGoogleLogin = () => {
         googleLogIn()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student' }
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student', image: loggedUser.photoURL }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -40,18 +47,18 @@ const Login = () => {
                     },
                     body: JSON.stringify(savedUser)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(loggedUser);
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true });
+                    })
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message
                 })
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: error.message
-              })
-        })
+            })
     }
 
 
@@ -78,17 +85,18 @@ const Login = () => {
                                     })} />
                                 {errors.email && <p className="text-red-500">Email is required and must be valid</p>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered"
+                                <input type={`${view ? 'text' : 'password'}`} placeholder="password" className="input input-bordered"
                                     {...register("password", {
                                         required: true, pattern: {
                                             value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
                                             message: 'Password must be at least 6 characters long and contain at least one letter and one number'
                                         }
                                     })} />
+                                <button type="button" onClick={() => setView(!view)} ><FaEye className="absolute right-5 bottom-12" /></button>
                                 {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -100,7 +108,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="divider"></div>
-                        <button onClick={handleGoogleLogin} className="btn btn-circle btn-error mx-auto mb-5"><FaGoogle /></button>
+                        <button type="button" onClick={handleGoogleLogin} className="btn btn-circle btn-error mx-auto mb-5"><FaGoogle /></button>
                     </form>
                 </div>
             </div>

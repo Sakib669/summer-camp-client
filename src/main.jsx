@@ -26,6 +26,7 @@ import MyClasses from './pages/instructor/MyClasses.jsx'
 import ManageUsers from './pages/admin/ManageUsers.jsx'
 import ManageClasses from './pages/admin/ManageClasses.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
+import DashboardHome from './pages/dashboard/DashboardHome.jsx'
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
+      {
+        path: '',
+        element: <DashboardHome/>
+      },
       {
         path: 'studentClasses',
         element: <SelectedClasses />
