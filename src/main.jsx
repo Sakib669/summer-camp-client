@@ -26,7 +26,7 @@ import MyClasses from './pages/instructor/MyClasses.jsx'
 import ManageUsers from './pages/admin/ManageUsers.jsx'
 import ManageClasses from './pages/admin/ManageClasses.jsx'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -61,36 +61,36 @@ const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
-        path : 'studentClasses',
-        element: <SelectedClasses/>
+        path: 'studentClasses',
+        element: <SelectedClasses />
       },
       {
         path: 'studentClasses/pay/:id',
-        element: <Payment/>
+        element: <Payment />
       },
       {
         path: 'studentEnrolledClasses',
-        element: <EnrolledClasses/>,
+        element: <EnrolledClasses />,
       },
       {
         path: 'studentPaymentHistory',
-        element: <PaymentHistory/>
+        element: <PaymentHistory />
       },
       {
         path: 'instructorAddClass',
-        element: <AddClass/>
+        element: <AddClass />
       },
       {
         path: 'instructorMyClasses',
-        element: <MyClasses/>
+        element: <MyClasses />
       },
       {
         path: 'admin/manageUsers',
-        element: <ManageUsers/>
+        element: <ManageUsers />
       },
       {
         path: 'admin/manageClasses',
-        element: <ManageClasses/>
+        element: <ManageClasses />
       }
     ]
   }
@@ -98,10 +98,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
+    <>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
         <RouterProvider router={router} />
-      </QueryClientProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+    </>
   </React.StrictMode>,
 )

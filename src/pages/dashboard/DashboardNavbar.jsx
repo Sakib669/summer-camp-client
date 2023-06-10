@@ -8,10 +8,10 @@ const DashboardNavbar = () => {
     const [isStudent] = useStudent();
     const [isInstructor] = useInstructor();
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
+    // console.log(isAdmin);
 
-    console.log(isStudent , 'student');
-    console.log(isInstructor , 'instructor');
+    // console.log(isStudent , 'student');
+    // console.log(isInstructor , 'instructor');
 
     const navItems = <>
         <li className='hover:text-info'><NavLink to='/'>Home</NavLink></li>
