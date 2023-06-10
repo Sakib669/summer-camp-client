@@ -25,6 +25,7 @@ import AddClass from './pages/instructor/AddClass.jsx'
 import MyClasses from './pages/instructor/MyClasses.jsx'
 import ManageUsers from './pages/admin/ManageUsers.jsx'
 import ManageClasses from './pages/admin/ManageClasses.jsx'
+import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 
 const queryClient = new QueryClient();
 
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
         element: <ManageClasses />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <ErrorPage/>
   }
 ])
 
