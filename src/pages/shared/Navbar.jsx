@@ -26,7 +26,7 @@ const Navbar = ({ toggle, setToggle }) => {
         <li className='hover:text-info'><Link>Home</Link></li>
         <li className='hover:text-info'><Link to='/instructors'>Instructors</Link></li>
         <li className='hover:text-info'><Link to='/classes'>Classes</Link></li>
-        <li className='hover:text-info'><Link to='/dashboard'>Dashboard</Link></li>
+
         {
             user ?
                 <li className='hover:text-info'><button onClick={handleLogOut}>Log Out</button></li> :
@@ -34,15 +34,18 @@ const Navbar = ({ toggle, setToggle }) => {
         }
         {
             user &&
-            <li className='hover:text-info'>
-                <div className="avatar">
-                    <div className="w-12 rounded-full ring ring-info ring-offset-base-100 ring-offset-2">
-                        <img src={user?.photoURL} />
+            <>
+                <li className='hover:text-info'><Link to='/dashboard'>Dashboard</Link></li>
+                <li className='hover:text-info'>
+                    <div className="avatar">
+                        <div className="w-12 rounded-full ring ring-info ring-offset-base-100 ring-offset-2">
+                            <img src={user?.photoURL} />
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            </>
         }
-        <li ><select  onChange={handleToggleChange} className="select w-5 max-w-xs hidden md:block">
+        <li ><select onChange={handleToggleChange} className="select w-5 max-w-xs hidden md:block">
             <option value={false} defaultValue>Light</option>
             <option value={true}>Dark</option>
         </select></li>

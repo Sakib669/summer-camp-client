@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const PaymentHistory = () => {
     const [data, setData] = useState([]);
     const [axiosSecure] = useAxiosSecure();
+    const {user} = useContext(AuthContext);
     useEffect(() => {
-        axiosSecure('/payment-details')
+        axiosSecure(`/payment-details/${user.email}`)
             .then(res => setData(res.data));
     }, []);
     // console.log(data);

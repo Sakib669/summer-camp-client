@@ -16,7 +16,7 @@ const DashboardNavbar = () => {
     const navItems = <>
         <li className='hover:text-info'><NavLink to='/'>Home</NavLink></li>
         {
-            isStudent && 
+            isStudent &&
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentClasses'>My Selected Classes</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/studentEnrolledClasses'>My Enrolled Classes</NavLink></li>
@@ -24,14 +24,14 @@ const DashboardNavbar = () => {
             </>
         }
         {
-            isInstructor?.role === 'instructor' && 
+            isInstructor?.role === 'instructor' &&
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/instructorAddClass'>Add a Class</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/instructorMyClasses'>My Classes</NavLink></li>
             </>
         }
         {
-            isAdmin?.role === 'admin' && 
+            isAdmin?.role === 'admin' &&
             <>
                 <li className='hover:text-info'><NavLink to='/dashboard/admin/manageUsers'>Manage Users</NavLink></li>
                 <li className='hover:text-info'><NavLink to='/dashboard/admin/manageClasses'>Manage Classes</NavLink></li>
@@ -50,7 +50,10 @@ const DashboardNavbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <a className=" normal-case text-xl">
+                    <img src="https://i.ibb.co/SrW2q87/logo-1.png"
+                        className="w-32 inline" />
+                </a>
             </div>
             <div className="navbar-end hidden lg:flex items-center">
                 <ul className="menu menu-horizontal px-1">
