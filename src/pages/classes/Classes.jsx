@@ -13,7 +13,9 @@ const Classes = () => {
     const navigate = useNavigate();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    console.log(isAdmin, isInstructor); 
+    // console.log(isAdmin, isInstructor); 
+
+
     const addToCart = (lecture) => {
         if (!user) {
             Swal.fire({
@@ -55,7 +57,7 @@ const Classes = () => {
                             <p>Instructor: {lecture.instructor}</p>
                             <p>Price: ${lecture.price}</p>
                             <p>Available Seats : {lecture.availableSeats}</p>
-                            <button disabled={lecture.availableSeats <= 0 || isAdmin.length > 0 || isInstructor} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
+                            <button disabled={lecture.availableSeats <= 0 || isAdmin.length > 0 || isAdmin?.role == 'admin' ||isInstructor} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
 
                         </div>
                     </div>)
