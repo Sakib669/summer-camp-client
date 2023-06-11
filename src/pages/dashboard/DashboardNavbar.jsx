@@ -10,7 +10,7 @@ const DashboardNavbar = () => {
     const [isAdmin] = useAdmin();
     // console.log(isAdmin, 'admin');
 
-    console.log(isStudent , 'student');
+    // console.log(isStudent , 'student');
     // console.log(isInstructor , 'instructor');
 
     const navItems = <>

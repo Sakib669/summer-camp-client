@@ -42,9 +42,9 @@ const Navbar = ({ toggle, setToggle }) => {
                 </div>
             </li>
         }
-        <li ><select  onChange={handleToggleChange} className="select w-5 max-w-xs">
-            <option value={true} defaultValue>Light</option>
-            <option value={false}>Dark</option>
+        <li ><select  onChange={handleToggleChange} className="select w-5 max-w-xs hidden md:block">
+            <option value={false} defaultValue>Light</option>
+            <option value={true}>Dark</option>
         </select></li>
     </>
     return (

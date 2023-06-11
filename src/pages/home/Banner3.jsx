@@ -14,7 +14,7 @@ const Banner3 = () => {
             <section className='grid grid-cols-1 md:grid-cols-2 gap-20 gap-y-40 md:mx-40 mx-5 mt-40'>
                 {
                     data?.map(teacher =>
-                        <div className="card relative bg-slate-200 shadow-2xl">
+                        <div key={teacher._id} className="card relative bg-slate-200 shadow-2xl">
                             <div className="avatar absolute -top-1/3 left-10 bg-slate-200 rounded shadow-neutral-500 shadow-inner p-3">
                                 <div className="w-24 rounded">
                                     <img src={teacher.image} />

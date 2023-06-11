@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const EnrolledClasses = () => {
+    const {user} = useContext(AuthContext);
     const [data, setData] = useState([]);
     const [axiosSecure] = useAxiosSecure();
     useEffect(() => {
-        axiosSecure('/payment-details')
+        axiosSecure(`/payment-details/${user.email}`)
             .then(res => setData(res.data));
     }, []);
     return (

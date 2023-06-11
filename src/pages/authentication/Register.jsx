@@ -37,7 +37,7 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                // console.log(loggedUser);
+                                console.log(data);
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'Register Successfull',
