@@ -3,15 +3,17 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import useStudent from './../../hooks/useStudent';
+import useAdmin from './../../hooks/useAdmin';
+import useInstructor from './../../hooks/useInstructor';
 
 
 const Classes = () => {
     const { data } = useLoaderData();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [isStudent] = useStudent();
-    // console.log(data); 
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    console.log(isAdmin, isInstructor); 
     const addToCart = (lecture) => {
         if (!user) {
             Swal.fire({
@@ -29,7 +31,7 @@ const Classes = () => {
 
 
         const lectureData = { lecture, email: user.email }
-        axios.post('http://localhost:5000/classes-cart', lectureData)
+        axios.post('https://summer-camp-server-snowy.vercel.app/classes-cart', lectureData)
             .then(res => {
                 if (res.data.acknowledged) {
                     Swal.fire(
@@ -45,7 +47,7 @@ const Classes = () => {
     return (
         <section className="grid grid-cols-3 mx-40 gap-20">
             {
-                data.map(lecture =>
+                data?.map(lecture =>
                     <div key={lecture._id} className={`${lecture.availableSeats == 0 ? 'bg-red-600' : ''} border rounded-xl border-slate-300 w-[300px] p-4`}>
                         <img src={lecture.image} className="rounded-t-xl w-auto mb-4" />
                         <div className={`space-y-2`}>
@@ -53,7 +55,7 @@ const Classes = () => {
                             <p>Instructor: {lecture.instructor}</p>
                             <p>Price: ${lecture.price}</p>
                             <p>Available Seats : {lecture.availableSeats}</p>
-                            <button disabled={lecture.availableSeats <= 0 || !isStudent} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
+                            <button disabled={lecture.availableSeats <= 0 || isAdmin.length > 0 || isInstructor} onClick={() => addToCart(lecture)} className="btn btn-info py-1">Select</button>
 
                         </div>
                     </div>)

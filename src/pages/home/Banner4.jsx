@@ -38,7 +38,7 @@ const Banner4 = () => {
                 className="mySwiper rounded-lg"
             >
                 {
-                    reviews.map(review =>
+                    reviews?.map(review =>
                         <SwiperSlide
                             className="space-y-10 py-5"
                             key={review.author}>

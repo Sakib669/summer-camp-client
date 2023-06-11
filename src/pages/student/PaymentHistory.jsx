@@ -26,7 +26,7 @@ const PaymentHistory = () => {
                     </thead>
                     <tbody className='items-center'>
                         {
-                            data.map((data, index) =>
+                            data?.map((data, index) =>
                                 <tr key={data._id}>
                                     <th>{index + 1}</th>
                                     <td>{data.lecture.name}</td>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const Banner3 = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        axios('http://localhost:5000/teachers/banner3')
+        axios('https://summer-camp-server-snowy.vercel.app/teachers/banner3')
             .then(res => setData(res.data))
     }, [])
     // console.log(data);

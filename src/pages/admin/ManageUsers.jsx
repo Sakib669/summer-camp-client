@@ -7,16 +7,16 @@ const ManageUsers = () => {
     const [allUsers, setAllUsers] = useState([]);
     const [axiosSecure] = useAxiosSecure();
     useEffect(() => {
-        const x = axiosSecure.get(`http://localhost:5000/all-users-data`)
+        const x = axiosSecure.get(`https://summer-camp-server-snowy.vercel.app/all-users-data`)
             .then(res => setAllUsers(res.data))
     }, [])
 
     const handleRoleUpdate = (role, email) => {
         console.log(role, email);
-        axios.patch(`http://localhost:5000/all-users-data/?email=${email}&role=${role}`)
+        axios.patch(`https://summer-camp-server-snowy.vercel.app/all-users-data/?email=${email}&role=${role}`)
             .then(res => {
                 if (res.data.acknowledged) {
-                    const x = axiosSecure.get(`http://localhost:5000/all-users-data`)
+                    const x = axiosSecure.get(`https://summer-camp-server-snowy.vercel.app/all-users-data`)
                         .then(res => setAllUsers(res.data))
                     Swal.fire('Role updated')
                 }
@@ -40,7 +40,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            allUsers.map(item =>
+                            allUsers?.map(item =>
                                 <tr>
                                     <th>{item.name}</th>
                                     <td>{item.email}</td>

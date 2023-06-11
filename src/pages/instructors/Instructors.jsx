@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const Instructors = () => {
     const [teachers, setTeachers] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/teachers')
+        fetch('https://summer-camp-server-snowy.vercel.app/teachers')
             .then(res => res.json())
             .then(data => setTeachers(data))
     }, [])
@@ -13,7 +13,7 @@ const Instructors = () => {
         <section className="min-h-screen py-40">
             <article className="grid md:grid-cols-3 gap-20 mx-40">
                 {
-                    teachers.map(teacher =>
+                    teachers?.map(teacher =>
                         <div 
                         
                         key={teacher.email}>

@@ -31,7 +31,12 @@ const Login = () => {
                 })
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error.message))
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: error.message,
+                })
+            })
     };
 
     const handleGoogleLogin = () => {
@@ -40,7 +45,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const savedUser = { name: loggedUser.displayName, email: loggedUser.email, role: 'student', image: loggedUser.photoURL }
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-server-snowy.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

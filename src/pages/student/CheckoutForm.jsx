@@ -30,6 +30,7 @@ const CheckoutForm = ({ price, lectureId, lecture }) => {
                 })
         }
     }, [price, axiosSecure])
+    // console.log(clientSecret);
 
 
     const handleSubmit = async (event) => {

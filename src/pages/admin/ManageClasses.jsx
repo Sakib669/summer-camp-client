@@ -24,7 +24,7 @@ const ManageClasses = () => {
         e.preventDefault();
         const feedback = e.target.feedback.value;
 
-        axios.patch(`http://localhost:5000/all-classes-data?id=${selectedItem._id}&feedback=${feedback}&status=${status}`)
+        axios.patch(`https://summer-camp-server-snowy.vercel.app/all-classes-data?id=${selectedItem._id}&feedback=${feedback}&status=${status}`)
             .then(res => {
                 console.log(res.data);
                 if (res.data.acknowledged) {
@@ -42,7 +42,7 @@ const ManageClasses = () => {
             <h3 className="text-2xl font-bold mb-5 text-center">All Classes</h3>
             <div className='min-h-screen flex flex-wrap gap-10 mx-40 my-20'>
                 {
-                    allLectures.map(item => <div key={item._id} className="flex bg-base-100 shadow-2xl w-full rounded-lg">
+                    allLectures?.map(item => <div key={item._id} className="flex bg-base-100 shadow-2xl w-full rounded-lg">
                         <figure><img src={item.image} className="w-64 rounded-s-lg h-full object-fill" /></figure>
                         <div className="ms-10 flex-grow my-auto p-y-2">
                             <h2 className="text-2xl font-bold">{item.name}</h2>

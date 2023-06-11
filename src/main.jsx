@@ -27,6 +27,9 @@ import ManageUsers from './pages/admin/ManageUsers.jsx'
 import ManageClasses from './pages/admin/ManageClasses.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 import DashboardHome from './pages/dashboard/DashboardHome.jsx'
+import StudentPrivate from './routes/StudentPrivate.jsx'
+import InstructorPrivate from './routes/InstructorPrivate.jsx'
+import AdminPrivate from './routes/AdminPrivate.jsx'
 
 const queryClient = new QueryClient();
 
@@ -54,7 +57,7 @@ const router = createBrowserRouter([
       {
         path: '/classes',
         element: <Classes />,
-        loader: () => axios('http://localhost:5000/classes')
+        loader: () => axios('https://summer-camp-server-snowy.vercel.app/classes')
       },
     ]
   },
@@ -68,35 +71,35 @@ const router = createBrowserRouter([
       },
       {
         path: 'studentClasses',
-        element: <SelectedClasses />
+        element: <StudentPrivate><SelectedClasses /></StudentPrivate>
       },
       {
         path: 'studentClasses/pay/:id',
-        element: <Payment />
+        element: <StudentPrivate><Payment /></StudentPrivate>
       },
       {
         path: 'studentEnrolledClasses',
-        element: <EnrolledClasses />,
+        element: <StudentPrivate><EnrolledClasses />,</StudentPrivate>
       },
       {
         path: 'studentPaymentHistory',
-        element: <PaymentHistory />
+        element: <StudentPrivate><PaymentHistory /></StudentPrivate>
       },
       {
         path: 'instructorAddClass',
-        element: <AddClass />
+        element: <InstructorPrivate><AddClass /></InstructorPrivate>
       },
       {
         path: 'instructorMyClasses',
-        element: <MyClasses />
+        element: <InstructorPrivate><MyClasses /></InstructorPrivate>
       },
       {
         path: 'admin/manageUsers',
-        element: <ManageUsers />
+        element: <AdminPrivate><ManageUsers /></AdminPrivate>
       },
       {
         path: 'admin/manageClasses',
-        element: <ManageClasses />
+        element: <AdminPrivate><ManageClasses /></AdminPrivate>
       }
     ]
   },

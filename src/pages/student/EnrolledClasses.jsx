@@ -13,7 +13,7 @@ const EnrolledClasses = () => {
     return (
         <section className='min-h-screen flex flex-wrap gap-10 mx-40 my-20'>
             {
-                data.map(item =>
+                data?.map(item =>
                     <div key={item._id} className="flex bg-base-100 shadow-2xl w-full rounded-lg">
                         <figure><img src={item?.lecture?.image} className="w-64 rounded-s-lg" /></figure>
                         <div className="ms-10 flex-grow my-auto">
