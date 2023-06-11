@@ -11,7 +11,7 @@ const Classes = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isStudent] = useStudent();
-    console.log(data); 
+    // console.log(data); 
     const addToCart = (lecture) => {
         if (!user) {
             Swal.fire({
